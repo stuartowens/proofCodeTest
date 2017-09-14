@@ -1,0 +1,18 @@
+
+{
+  "name": "stuartowens.com",
+  "version": "1.0.0",
+  "description": "Stuart Owens Portfolio",
+  "main": "bin/www",
+  "scripts": {
+    "start": "nodemon --inspect bin/www --ignore src/client",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
+  },
+  "author": "Jerry Krusinski <jkruzr@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
