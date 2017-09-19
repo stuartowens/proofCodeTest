@@ -1,0 +1,36 @@
+const app = require('../src/server/index');
+const http = require('http');
+const port = require('../config');
+
+app.set('port', port);
+const server = http.createServer(app);
+
+server.listen(port);
+
+server.on('error', function(error) {
+  if(error.syscall !== 'listen'){
+    throw error;
+  }
+  switch(error.code) {
+    case 'EACCES':
+      console.error('Port requires elevated priveleges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error('Port is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+
+})
+
+server.on('listening', function() {
+  const addr = server.address();
+  const bind = typeof === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+
+  console.log('Listening on ' + bind)
+})
