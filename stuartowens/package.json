@@ -4,11 +4,11 @@
   "description": "Stuart Owens Portfolio",
   "main": "bin/www",
   "scripts": {
-    "start": "nodemon --inspect bin/www.js --ignore src/client",
+    "start": "nodemon --inspect bin/www --ignore src/client",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
-  "author": "Jerry Krusinski <jkruzr@gmail.com>",
+  "author": "Stuart Owens",
   "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.16.2",

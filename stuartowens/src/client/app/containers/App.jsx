@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -15,9 +15,11 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 
 const reducer = combineReducers(reducers)
 
-class App extends component {
+class App extends Component {
   render() {
     return (
+      <div>
+      <h1>Heyyyyy1234</h1>
       <Provider store={store}>
         <BrowserRouter>
           <div>
@@ -26,11 +28,11 @@ class App extends component {
                 <Route path="/about" component={About} />
                 <Route render={()=> <Redirect to="/about" />} />
               </Switch>
-
             </div>
           </div>
         </BrowserRouter>
       </Provider>
+      </div>
     )
   }
 }
