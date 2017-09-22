@@ -1,8 +1,8 @@
 const express = require ('express');
-const bodyParser = require ('bodyparser');
+const bodyParser = require ('body-parser');
 const morgan = require('morgan');
 const path = require('path');
-const sendmail =  require('./sendmail');
+const sendmail =  require('./send-mail');
 const {env} = require('../../config');
 
 const app = express();

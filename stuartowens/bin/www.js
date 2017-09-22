@@ -28,7 +28,7 @@ server.on('error', function(error) {
 
 server.on('listening', function() {
   const addr = server.address();
-  const bind = typeof === 'string'
+  const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
 

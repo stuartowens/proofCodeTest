@@ -4,7 +4,7 @@
   "description": "Stuart Owens Portfolio",
   "main": "bin/www",
   "scripts": {
-    "start": "nodemon --inspect bin/www --ignore src/client",
+    "start": "nodemon --inspect bin/www.js --ignore src/client",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
