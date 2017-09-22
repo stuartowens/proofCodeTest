@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: auth.username,
-    password: uth.password
+    password: auth.password
   }
 });
 
@@ -20,7 +20,7 @@ module.exports = (name, email, message ) => {
 return new Promise((fulfill, reject) => {
   transporter.sendMail(
     {
-      from: `"${name}" <${email}>`
+      from: `"${name}" <${email}>`,
       to: 'stuart@stuartowens.com',
       subject: `${name} Message from stuartowens.com`,
       html:
