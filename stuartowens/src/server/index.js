@@ -25,7 +25,7 @@ app.get('/*', (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
-  var status = err.status || 500
+  var status = err.status || 500;
   var message = env === 'development' ? err.stack : err.message;
   res.status(status).send(message);
 });
