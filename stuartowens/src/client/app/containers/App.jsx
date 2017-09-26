@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
       <h1>Heyyyyy1234</h1>
-      <Provider store={store}>
+      {/* <Provider store={store}>
         <BrowserRouter>
           <div>
             <div className="container">
@@ -31,7 +31,7 @@ class App extends Component {
             </div>
           </div>
         </BrowserRouter>
-      </Provider>
+      </Provider> */}
       </div>
     )
   }

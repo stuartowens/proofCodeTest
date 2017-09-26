@@ -13,7 +13,7 @@ server.on('error', function(error) {
   }
   switch(error.code) {
     case 'EACCES':
-      console.error('Port requires elevated priveleges');
+      console.error('Port requires elevated privileges');
       process.exit(1);
       break;
     case 'EADDRINUSE':
