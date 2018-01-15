@@ -16,6 +16,7 @@ exports.handler = (event, context, callback) => {
       console.log('logStreamName =', context.logStreamName);
       console.log('clientContext =', context.clientContext);
       if (atlas_connection_uri != null) {
+        atlas_connection_uri = uri;
           processEvent(event, context, callback);
       }
       else {
@@ -72,7 +73,11 @@ function queryDatabase(db, event) {
     return db.collection('restaurants').aggregate([{ $match: { "address.zipcode": jsonContents.zipcode, "cuisine": jsonContents.cuisine, "name": new RegExp(jsonContents.startsWith) } },
     { $project: { "_id": 0, "name": 1, "address.building": 1, "address.street": 1, "borough": 1, "address.zipcode": 1, "healthScoreAverage": { $avg: "$grades.score" }, "healthScoreWorst": { $max: "$grades.score" } } }
     ]).toArray()
-        .then(docs => { return docs;})
+        .then(docs => {
+          // console.log("Kudos! You just created an entry into the restaurants collection with id: " + docs);
+          return docs;
+
+        })
         .catch(err => { return err; });
 }
 
