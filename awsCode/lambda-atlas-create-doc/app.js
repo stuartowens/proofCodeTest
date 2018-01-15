@@ -59,6 +59,24 @@ function processEvent(event, context, callback) {
 }
 
 
+function queryDatabase(db, event) {
+    var jsonContents = JSON.parse(JSON.stringify(event));
+
+    //handling API Gateway input where the event is embedded into the 'body' element
+    if (event.body !== null && event.body !== undefined) {
+        console.log('retrieving payload from event.body');
+        jsonContents = JSON.parse(event.body);
+    }
+
+    console.log('query parameters: ', jsonContents);
+    return db.collection('restaurants').aggregate([{ $match: { "address.zipcode": jsonContents.zipcode, "cuisine": jsonContents.cuisine, "name": new RegExp(jsonContents.startsWith) } },
+    { $project: { "_id": 0, "name": 1, "address.building": 1, "address.street": 1, "borough": 1, "address.zipcode": 1, "healthScoreAverage": { $avg: "$grades.score" }, "healthScoreWorst": { $max: "$grades.score" } } }
+    ]).toArray()
+        .then(docs => { return docs;})
+        .catch(err => { return err; });
+}
+
+
 
 
 // exports.handler = (event, context, callback) => {
