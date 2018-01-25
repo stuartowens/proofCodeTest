@@ -47,6 +47,7 @@ function connectToDatabase(uri) {
 }
 
 function processEvent(event, context, callback) {
+    context.callbackWaitsForEmptyEventLoop = false
     connectToDatabase(atlas_connection_uri)
         .then(db => queryDatabase(db, event))
         .then(result => {
@@ -70,11 +71,24 @@ function queryDatabase(db, event) {
     }
 
     console.log('query parameters: ', jsonContents);
-    return db.collection('restaurants').aggregate([{ $match: { "address.zipcode": jsonContents.zipcode, "cuisine": jsonContents.cuisine, "name": new RegExp(jsonContents.startsWith) } },
-    { $project: { "_id": 0, "name": 1, "address.building": 1, "address.street": 1, "borough": 1, "address.zipcode": 1, "healthScoreAverage": { $avg: "$grades.score" }, "healthScoreWorst": { $max: "$grades.score" } } }
+    let startsWith = jsonContents.startsWith;
+    let prefix = jsonContents.prefix;
+    let category = jsonContents.category;
+    let query;
+    if(prefix.length && category.length) {
+      query = { "name": new RegExp(startsWith) , "prefix": prefix, "category": category};
+    } else if(prefix.length) {
+      query = { "name": new RegExp(startsWith) , "prefix": prefix};
+    } else if (category.length) {
+      query = { "name": new RegExp(startsWith), "category": category};
+    } else {
+      query = { "name": new RegExp(startsWith) }
+    }
+    return db.collection('Numbers').aggregate([{ $match: query },
+    { $project: { "_id": 0, "name": 1, "number": 1, "vanity_tier": 1, "prefix": 1, "category": 1, "popular_usage": 1, "unavailable_markets": 1, "url": 1 } }
     ]).toArray()
         .then(docs => {
-          // console.log("Kudos! You just created an entry into the restaurants collection with id: " + docs);
+          console.log("Kudos! You just queried an entry in the numbers collection with name, category, and prefix: " + docs);
           return docs;
 
         })
@@ -83,7 +97,9 @@ function queryDatabase(db, event) {
 
 
 
-
+var testAPI = {   "stateMachineArn": "arn:aws:states:us-east-1:077838313479:stateMachine:WhatsThisRestrauntAgain",
+"input":"{\"startsWith\": \"V\", \"cuisine\": \"Italian\",\"zipcode\": \"10075\",\"phoneTo\": \"+15555555555\",\"firstnameTo\": \"Stu\",\"emailTo\": \"homerowens@yahoo.com\",\"subject\": \"List of restaurants for {{firstnameTo}}\"}"
+}
 // exports.handler = (event, context, callback) => {
 //     var uri = process.env['MONGODB_ATLAS_CLUSTER_URI'];
 //
@@ -143,17 +159,17 @@ function queryDatabase(db, event) {
 // }
 //
 // function createDoc (db, json, callback) {
-//   db.collection('restaurants').updateOne( json, function(err, result) {
+//   db.collection('Numbers').find({ number: json.number }, function(err, result) {
 //       if(err!=null) {
 //           console.error("an error occurred in createDoc", err);
 //           callback(null, JSON.stringify(err));
 //       }
 //       else {
-//         console.log("Kudos! You just created an entry into the restaurants collection with id: " + result.insertedId);
+//         console.log("Kudos! You just created an entry into the numbers collection with id: " + result.insertedId);
 //         callback(null, "SUCCESS");
 //       }
 //       //we don't need to close the connection thanks to context.callbackWaitsForEmptyEventLoop = false (above)
 //       //this will let our function re-use the connection on the next called (if it can re-use the same Lambda container)
-//       //db.close();
+//       // db.close();
 //   });
 // };

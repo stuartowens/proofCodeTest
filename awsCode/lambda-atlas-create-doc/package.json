@@ -11,6 +11,7 @@
   "dependencies": {
     "aws-sdk": "^2.181.0",
     "lambda-local": "^1.4.5",
-    "mongodb": "^2.2.33"
+    "mongodb": "^2.2.33",
+    "mustache": "^2.3.0"
   }
 }

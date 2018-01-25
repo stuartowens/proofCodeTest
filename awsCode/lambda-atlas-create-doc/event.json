@@ -22,3 +22,63 @@
    "name" : "Vella",
    "restaurant_id" : "41704620"
 }
+[{
+"name": "1-888-SpineDoc",
+"number": "888-774-6332",
+"vanity_tier": 1,
+"prefix": "888",
+"category": "Medical",
+"popular_usage": ["SpineDoc"],
+"unavailable_markets": [
+  "512"
+],
+"url": "1888SpineDoc.com"
+},
+{
+"name": "1-866-Discount",
+"number": "866-347-2686",
+"vanity_tier": 1,
+"prefix": "888",
+"category": "Sales",
+"popular_usage": ["Discount"],
+"unavailable_markets": [
+  "512"
+],
+"url": "1866Discount.net"
+}
+]
+  [{
+  "name": "1-888-Snoring",
+  "number": "888-786-7724",
+  "vanity_tier": 1,
+  "prefix": "888",
+  "category": "Medical",
+  "popular_usage": ["Snoring"],
+  "unavailable_markets": [
+    "972","214"
+  ],
+  "url": "1888Snoring.com"
+},
+{
+  "name": "1-800-BoneDoc",
+  "number": "888-266-3362",
+  "vanity_tier": 1,
+  "prefix": "888",
+  "category": "Medical",
+  "popular_usage": ["BoneDoc"],
+  "unavailable_markets": [
+    "214","972"
+  ],
+  "url": "1888BoneDoc.net"
+}
+]
+{
+  "name": "1-800-StopPain",
+  "number": "800-786-7724",
+  "vanity_tier": 1,
+  "prefix": "800",
+  "category": "Medical",
+  "popular_usage": ["StopPain","StopRage","StopSaga", "StopRaid", "SunsSail"],
+  "unavailable_markets": ["512"],
+  "url": "1-800-StopPain.com"
+}
