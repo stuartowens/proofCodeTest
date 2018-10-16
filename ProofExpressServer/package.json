@@ -1,0 +1,19 @@
+{
+  "name": "Proof-Sample-App",
+  "version": "1.0.0",
+  "description": "Coding test app for Proof",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "^4.2.0"
+  },
+  "author": "Stuart Owens",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "lodash": "^4.17.4"
+  }
+}
