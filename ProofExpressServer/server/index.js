@@ -1,9 +1,9 @@
-const express = require('express'),
-const expressHandlebars = require('express-handlebars'),
+const express = require('express');
+const expressHandlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 module.exports = function() {
-    let server = express(); 
+    let server = express();
     let create;
     let start;
 
