@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 
@@ -16,6 +17,9 @@ module.exports = function() {
         server.set('hostname', config.hostname);
         server.set('viewDir', config.viewDir);
 
+        server.use('/app', express.static(config.viewDir));
+        server.use('/images', express.static(config.imageDir));
+
         // Returns middleware that parses json
         server.use(bodyParser.json());
 
@@ -27,14 +31,16 @@ module.exports = function() {
         }));
         server.set('views', server.get('viewDir'));
         server.set('view engine', '.hbs');
+        // Connect to Mongodb
+        mongoose.connect(config.dbUrl);
 
         // Set up routes
         routes.init(server);
     };
 
     start = function() {
-        let hostname = server.get('hostname'),
-            port = server.get('port');
+        let hostname = server.get('hostname');
+        let port = server.get('port');
 
         server.listen(port, function () {
             console.log('Express server listening on - http://' + hostname + ':' + port);
