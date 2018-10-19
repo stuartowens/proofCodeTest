@@ -26,7 +26,7 @@ const campaigns = [	{ "Campaign ID": "Campaign 1", "Identifier" : { "Geo" : "Aus
 
 // Ok so the bulk of the logic for the problem sort of sits here, first I find all the campaigns in current status (in case priority changes).
 
-function getUsers(req, res) {
+function groupUsers(req, res) {
     Campaign.find().then((campaigns, err)=>{
         campaigns.forEach((campaignEle, i, arr)=> {
             User.find(campaignEle.Identifier).then((users, err)=>{
@@ -84,7 +84,7 @@ function getUserWithId(req, res) {
 }
 
 module.exports = {
-    getUsers: getUsers,
+    groupUsers: groupUsers,
     getUserWithId: getUserWithId,
     createUsers: createUsers,
     createCampaigns: createCampaigns

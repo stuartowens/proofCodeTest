@@ -32,14 +32,14 @@ const functionalImageTest = function(ip, src) {
     let srcTarget = 'http://localhost:3000/images/'
     srcTarget = srcTarget.concat(src)
     describe('Member ' + ip + ' Test', () => {
-      it('go to local host 3000 and login with member IP address ' + ip + 'to show an image with src tag of ' + srcTarget,async function example() {
-        await driver.get('http://localhost:3000/home');
-        await driver.findElement(By.id('memberIP')).sendKeys(ip, Key.RETURN);
-        await driver.findElement(By.id('loginButton')).click();
-        await driver.manage().setTimeouts( { implicit: TIMEOUT, pageLoad: TIMEOUT, script: TIMEOUT } )
-        const srcTag = await driver.findElement(By.id('targetImg')).getAttribute("src");
-        expect(srcTag).to.equal(srcTarget);
-      })
+        it('go to local host 3000 and login with member IP address ' + ip + 'to show an image with src tag of ' + srcTarget,async function example() {
+            await driver.get('http://localhost:3000/home');
+            await driver.findElement(By.id('memberIP')).sendKeys(ip, Key.RETURN);
+            await driver.findElement(By.id('loginButton')).click();
+            await driver.manage().setTimeouts( { implicit: TIMEOUT, pageLoad: TIMEOUT, script: TIMEOUT } )
+            const srcTag = await driver.findElement(By.id('targetImg')).getAttribute("src");
+            expect(srcTag).to.equal(srcTarget);
+        })
     })
 }
 

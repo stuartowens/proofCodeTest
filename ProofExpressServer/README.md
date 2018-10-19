@@ -7,11 +7,11 @@ Start Mongodb:
 Seed the Database:
   So I've included the CSV file in the project, with a third terminal run the following commands.
 
-  Seed Users with a Post to the server "mongoimport --host=127.0.0.1 -d proof -c users  --type csv --file ./ProofHW/Proof_homework.csv  --headerline"
+  Seed Users with a Post to the server "mongoimport --host=127.0.0.1 -d proof -c users  --type csv --file ./ProofHW/Proof_homework.csv  --headerline"  or Alternatively use Postman or Soap UI to make Post and Get requests
 
-  Seed Campaigns with a Post "curl --data "" http://localhost:3000/api/v1/users/createCampaigns"
+  Seed Campaigns with a Post "curl --data http://localhost:3000/api/v1/users/createCampaigns" or Alternatively use Postman or Soap UI to make Post and Get requests
 
-  Segment Users into groups using this GET "curl -i -H 'Accept: application/json' -H 'Content-Type: application/json' http://localhost:3000/api/v1/users/"
+  Segment Users into groups using this GET "curl -i -H 'Accept: application/json' -H 'Content-Type: application/json' http://localhost:3000/api/v1/users/" or Alternatively use Postman or Soap UI to make Post and Get requests
 
   There are other options like Postman or SoapUI. Whatever you are more comfortable with will be fine to seed the database.
 
@@ -21,4 +21,5 @@ Navigate to the Site:
 
     Press Logout to check another IP to see if they are all working
 
-Tests and code cleanup to come soon!
+Testing:
+    Run the command "npm test" to run all tests and if the first test isn't passing maybe try running one more time. Sometimes the browser isn't loading the image quickly enough before the test can check for the src attribute on the first login so definitely try multiple times if it doesn't work the first time.
