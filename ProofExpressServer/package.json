@@ -4,7 +4,8 @@
   "description": "Coding test app for Proof",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "mocha tests --timeout 10000"
   },
   "engines": {
     "node": "^4.2.0"
@@ -13,9 +14,13 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.16.0",
+    "chai": "^4.2.0",
+    "chromedriver": "^2.42.1",
     "express": "^4.14.1",
     "express-handlebars": "^3.0.0",
     "lodash": "^4.17.4",
-    "mongoose": "^5.3.4"
+    "mocha": "^5.2.0",
+    "mongoose": "^5.3.4",
+    "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }

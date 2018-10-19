@@ -32,7 +32,8 @@ function getUsers(req, res) {
             User.find(campaignEle.Identifier).then((users, err)=>{
 //For the subsect of Users identified with the query I update the current Campaign so that the most High Priority Campaign is represented
                 users.forEach((userEle)=>{
-                    if(!userEle["Campaign IDs"] || userEle["Campaign IDs"].Priority < campaignEle.Priority){
+                    console.log("userEle", userEle["Campaign IDs"].Priority, "campaignEle Priority", campaignEle.Priority, "CampaignEle Id", campaignEle["Campaign ID"])
+                    if(!userEle["Campaign IDs"] || userEle["Campaign IDs"].Priority > campaignEle.Priority){
                         User.update({"_id" : userEle._id}, { "Campaign IDs" : campaignEle }, function (err, raw) {
                             if (err) return console.log(err);
                             console.log('The raw response from Mongo was ', raw);

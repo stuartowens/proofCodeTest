@@ -18,6 +18,6 @@ export default {
   template: `
     <div>
       <h2>Welcome {{ info["Campaign IDs"]["Campaign ID"] }} User</h2>
-      <img :src="info['Campaign IDs']['ImagePath']" />
+      <img id="targetImg" :src="info['Campaign IDs']['ImagePath']" />
     </div>`
 };

@@ -19,8 +19,8 @@ export default {
     <ul class="list-reset">
       <div>
         <h2>Please Enter Your IP Address for Your Username</h2>
-        <input v-model="message" placeholder="IP Address" />
-        <button class="bg-blue hover:bg-blue-dark text-white py-1 px-2 rounded"
+        <input id="memberIP" v-model="message" placeholder="IP Address" />
+        <button id="loginButton" class="bg-blue hover:bg-blue-dark text-white py-1 px-2 rounded"
           @click="user.showInfo = !user.showInfo">
             {{ !user.showInfo ? 'LOGIN' : 'LOGOUT' }}
           </button>
